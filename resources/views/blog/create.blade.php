@@ -11,7 +11,7 @@
             </div>
 
             <div class="col-sm-10 col-sm-offset-1">
-                {!! Form::open(['method' => 'POST']) !!}
+                {!! Form::open(['method' => 'POST', 'action' => 'BlogController@store']) !!}
 
                     <div class="form-group">
                         {!! Form::label("title" , "Title:") !!}
@@ -20,7 +20,7 @@
 
                     <div class="form-group">
                         {!! Form::label("body" , "Body:") !!}
-                        {!! Form::text("body" , null, ['class' => 'form-control']) !!}
+                        {!! Form::textarea("body" , null, ['class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">

@@ -37,14 +37,15 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        Hippy Trippers
+                        {{-- config('app.name', 'Hippy Trippers') --}}
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        &nbsp;<li><a href="{{ url('/blog') }}">Blogs</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
