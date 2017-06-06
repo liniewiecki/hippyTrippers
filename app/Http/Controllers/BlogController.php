@@ -69,6 +69,10 @@ class BlogController extends Controller
     public function edit($id)
     {
         //
+        $blog = Blog::findOrFail($id);
+
+        return view('blog.edit', compact('blog'));
+
     }
 
     /**
@@ -81,6 +85,11 @@ class BlogController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $input = $request->all();
+        $blog = Blog::findOrFail($id);
+        $blog->update($input);
+
+        return redirect('/blog');
     }
 
     /**
@@ -89,8 +98,35 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         //
+        $blog = Blog::findOrFail($id);
+        $blog->delete($request->all());
+
+        return redirect('/blog/bin');
+
+    }
+
+    public function bin(){
+
+        $deletedBlogs = Blog::onlyTrashed()->get();
+        return view('blog.bin', compact('deletedBlogs'));
+    }
+
+    public function restore($id){
+
+        $restoredBlogs = Blog::onlyTrashed()->findOrFail($id);
+        $restoredBlogs->restore($restoredBlogs);
+
+        return redirect('/blog');
+    }
+
+    public function destroyBlog($id){
+
+        $destroyBlog = Blog::onlyTrashed()->findOrFail($id);
+        $destroyBlog->forceDelete($destroyBlog);
+
+        return back();
     }
 }
