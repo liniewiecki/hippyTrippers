@@ -34,6 +34,11 @@
                     </div>
 
                     <div class="form-group">
+                        {!! Form::label("meta_desc" , "Meta Description:") !!}
+                        {!! Form::text("meta_desc" , null, ['class' => 'form-control']) !!}
+                    </div>
+
+                    <div class="form-group">
                         {!! Form::submit("Create a blog" , ['class' => 'btn btn-primary']) !!}
                     </div>
 

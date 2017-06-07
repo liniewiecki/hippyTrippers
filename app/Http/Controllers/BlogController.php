@@ -50,6 +50,10 @@ class BlogController extends Controller
         //
 
         $input = $request->all();
+        $input['slug'] = str_slug($request->title);
+        $input['meta_title'] = $request->title;
+
+        // dd($input);
 
         if($file = $request->file('photo_id')){
 

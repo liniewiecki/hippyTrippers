@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-
+@include('partials.meta-static')
 @section('content')
 
     <main class="container-fluid">

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@include('partials.meta-static')
+
 
 @section('content')
     <div id="welcome">

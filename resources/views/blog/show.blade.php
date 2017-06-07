@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
 
+
 @section('content')
 
+ @include('partials.meta-dynamic')
     <main class="container-fluid">
 
                 <article>

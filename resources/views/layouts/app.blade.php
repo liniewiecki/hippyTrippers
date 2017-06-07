@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,8 +8,9 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <meta name="description" content="@yield('meta-desc')">
+    <meta name="author" content="@yield('meta-author')">
+    <title> Hippy Trippers @yield('meta-title')</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
