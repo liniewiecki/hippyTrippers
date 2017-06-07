@@ -14,10 +14,18 @@
 
 
                             <p>{{ $blog->body }}</p>
+
+                            @foreach($blog->category as $category)
+
+                            <p><a href="{{ route('categories.show', $category->slug) }}">{{  $category->slug }}</a></p>
+
+                                @endforeach
+
+                </div>
                 </article>
 
             </div>
-        </div>
+
     </main>
 
 

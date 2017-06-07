@@ -24,6 +24,11 @@
                     </div>
 
                     <div class="form-group">
+                        {!! Form::label("category_id" , "Category:") !!}
+                        {!! Form::select("category_id[]" , $category, null , ['id' => 'tag_list', 'class' => 'form-control', 'multiple']) !!}
+                    </div>
+
+                    <div class="form-group">
                         {!! Form::submit("Create a blog" , ['class' => 'btn btn-primary']) !!}
                     </div>
 
@@ -35,6 +40,8 @@
 
     <hr>
 
+  @include('partials.select-2-script')
 
 
 @endsection
+

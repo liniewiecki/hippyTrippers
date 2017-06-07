@@ -2,17 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class CategoryController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('admin');
-    }
-
-
     /**
      * Display a listing of the resource.
      *
@@ -20,8 +14,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
-        return view('admin.index');
+        $categories = Category::latest()->get();
+        return view('categories.index', compact('categories'));
     }
 
     /**
@@ -32,6 +26,7 @@ class AdminController extends Controller
     public function create()
     {
         //
+        return view('categories.create');
     }
 
     /**
@@ -42,7 +37,12 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category;
+        $category->name = $request->name;
+        $category->slug = str_slug($request->name);
+        $category->save();
+
+        return back();
     }
 
     /**
@@ -51,9 +51,10 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $category = Category::whereSlug($slug)->first();
+        return view('categories.show', compact('category'));
     }
 
     /**
@@ -64,7 +65,9 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        return view('categories.edit', compact('category'));
     }
 
     /**
@@ -76,7 +79,9 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->update($request->all());
+        return redirect('categories');
     }
 
     /**
@@ -87,6 +92,8 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return redirect('categories');
     }
 }

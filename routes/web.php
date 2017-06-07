@@ -36,5 +36,7 @@ Route::get('/blog/{id}/edit', 'BlogController@edit');
 Route::patch('/blog/{id}', 'BlogController@update');
 Route::delete('/blog/{id}', 'BlogController@destroy');
 
-Route::get('admin', 'AdminController@index');
+Route::get('/admin', 'AdminController@index')->middleware('admin');
+
+Route::resource('/categories', 'CategoryController');
 
